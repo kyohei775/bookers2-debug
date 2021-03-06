@@ -8,6 +8,28 @@
 	  <th>introduction</th>
 	  <th><%= @user.introduction %></th>
   </tr>
+    <% @user ||= current_user %>
+			<th>follows</th>
+			<th>
+			    <strong id="follower" class="stat">
+			      <%= @user.follower.count %>
+			    </strong>
+			  </a>
+			</th>
+  <tr>
+    <tr>
+			<% @user ||= current_user %>
+			<th>followers</th>
+			 <th>
+			    <strong id="followed" class="stat">
+			      <%= @user.followed.count %>
+			    </strong>
+			  </a>
+			</th>
+		</tr>
+    
+    
+  </tr>
 </table>
 
 <div class='row'>
