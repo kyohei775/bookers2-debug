@@ -17,19 +17,27 @@ class User < ApplicationRecord
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: { maximum: 50 }
   
-  # ユーザーをフォローする
-def follow(user_id)
-  follower.create(followed_id: user_id)
-end
-
-# ユーザーのフォローを外す
-def unfollow(user_id)
-  follower.find_by(followed_id: user_id).destroy
-end
-
-# フォローしていればtrueを返す
-def following?(user)
-  following_user.include?(user)
-end
+        # ユーザーをフォローする
+      def follow(user_id)
+        follower.create(followed_id: user_id)
+      end
+      
+      # ユーザーのフォローを外す
+      def unfollow(user_id)
+        follower.find_by(followed_id: user_id).destroy
+      end
+      
+      # フォローしていればtrueを返す
+      def following?(user)
+        following_user.include?(user)
+      end
+  
+      def User.search(search, user_or_book)
+       if user_or_book == "1"
+       User.where(['name LIKE ?', "%#{search}%"])
+       else
+       User.all
+       end
+      end
   
 end
