@@ -5,7 +5,7 @@ class BookCommentsController < ApplicationController
   	@book_comment = @book.book_comments.new(book_comment_params)
   	@book_comment.user_id = current_user.id
   	@book_comment.save
-  		redirect_back(fallback_location: root_path)
+  	redirect_back(fallback_location: root_path)
   end
 
   def destroy
